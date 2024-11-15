@@ -1,0 +1,8 @@
+.card {
+    .mat-mdc-card {
+        width: 360px !important;
+        height: 186px !important;
+        margin: 0 !important;
+        row-gap: 0.6rem !important;
+    }
+}

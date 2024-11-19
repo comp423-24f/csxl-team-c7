@@ -6,6 +6,7 @@ from .entity_base import EntityBase
 from typing import Self
 from ..models.organization import Organization
 from ..models.organization_details import OrganizationDetails
+from .user_organization_table import user_organization_table
 
 __authors__ = ["Ajay Gandecha", "Jade Keegan", "Brianna Ta", "Audrey Toney"]
 __copyright__ = "Copyright 2023"
@@ -19,6 +20,10 @@ class OrganizationEntity(EntityBase):
     __tablename__ = "organization"
 
     # Organization properties (columns in the database table)
+    users: Mapped[list["UserEntity"]] = relationship(
+        secondary=user_organization_table,
+        back_populates="organizations",
+    )
 
     # Unique ID for the organization
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
@@ -46,6 +51,8 @@ class OrganizationEntity(EntityBase):
     youtube: Mapped[str] = mapped_column(String)
     # Heel Life for the organization
     heel_life: Mapped[str] = mapped_column(String)
+    # is_open_to_join: Mapped[bool] = mapped_column(Boolean)
+    # user_role: Mapped[str] = mapped_column(String)
     # Whether the organization can be joined by anyone or not
     public: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
 

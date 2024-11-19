@@ -26,6 +26,7 @@ appteam = OrganizationEntity(
     instagram="https://www.instagram.com/appteamcarolina/",
     linked_in="https://www.linkedin.com/company/appteamcarolina",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/appteamcarolina",
     public=False,
 )
@@ -43,6 +44,7 @@ acm = OrganizationEntity(
     instagram="https://www.instagram.com/unc_acm/",
     linked_in="",
     youtube="https://www.youtube.com/channel/UCkgDDL-DKsFJKpld2SosbxA",
+    application="",
     heel_life="https://heellife.unc.edu/organization/acm-at-carolina",
     public=False,
 )
@@ -60,6 +62,7 @@ bit = OrganizationEntity(
     instagram="https://www.instagram.com/uncbit/",
     linked_in="",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/bit",
     public=False,
 )
@@ -77,6 +80,7 @@ cads = Organization(
     instagram="https://www.instagram.com/carolinadatascience/",
     linked_in="https://www.linkedin.com/company/carolina-data/",
     youtube="https://www.youtube.com/channel/UCO44Yjhjuo5-TLUCAaP0-cQ",
+    application="",
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
 )
@@ -94,6 +98,7 @@ carvr = OrganizationEntity(
     instagram="https://www.instagram.com/uncarvr/",
     linked_in="",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/carvr",
     public=False,
 )
@@ -111,6 +116,7 @@ cssg = Organization(
     instagram="https://www.instagram.com/unc_cssg/",
     linked_in="",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/cssg",
     public=False,
 )
@@ -128,6 +134,7 @@ ctf = OrganizationEntity(
     instagram="",
     linked_in="",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/ntropy-unc",
     public=False,
 )
@@ -145,6 +152,7 @@ enablingtech = OrganizationEntity(
     instagram="",
     linked_in="",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/enablingtechnologyclub",
     public=False,
 )
@@ -162,6 +170,7 @@ esports = OrganizationEntity(
     instagram="https://www.instagram.com/carolinaesports/",
     linked_in="",
     youtube="https://www.youtube.com/carolinaesports",
+    application="",
     heel_life="https://heellife.unc.edu/organization/esports",
     public=False,
 )
@@ -179,6 +188,7 @@ gamedev = OrganizationEntity(
     instagram="",
     linked_in="",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/uncgamedev",
     public=False,
 )
@@ -196,6 +206,7 @@ gwc = OrganizationEntity(
     instagram="https://www.instagram.com/gwc_unc/",
     linked_in="",
     youtube="",
+    application="",
     heel_life="",
     public=False,
 )
@@ -213,6 +224,7 @@ hacknc = OrganizationEntity(
     instagram="",
     linked_in="",
     youtube="https://www.youtube.com/channel/UCDRN6TMC27uSDsZosIwUrZg",
+    application="",
     heel_life="https://heellife.unc.edu/organization/hacknc",
     public=False,
 )
@@ -231,6 +243,7 @@ ktp = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/uncktp",
+    application="",
     public=False,
 )
 
@@ -248,6 +261,7 @@ pearlhacks = OrganizationEntity(
     linked_in="https://www.linkedin.com/company/pearl-hacks/mycompany/",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/pearlhacks",
+    application="",
     public=False,
 )
 
@@ -265,6 +279,7 @@ pm = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="",
+    application="",
     public=False,
 )
 
@@ -282,6 +297,7 @@ queerhack = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/queer_hack",
+    application="",
     public=False,
 )
 
@@ -299,6 +315,7 @@ wics = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/wins",
+    application="",
     public=False,
 )
 

@@ -25,5 +25,6 @@ class Organization(BaseModel):
     instagram: str
     linked_in: str
     youtube: str
+    application: str
     heel_life: str
     public: bool

@@ -70,6 +70,19 @@
         </p>
       </div>
       }
+      @if (organization.application !== '') {
+        <div class="row">
+          <mat-icon class="link-icons secondary-icon">link</mat-icon>
+          <p>
+            <a
+              class="font-secondary"
+              [href]="organization.application"
+              target="_blank"
+              >Website</a
+            >
+          </p>
+        </div>
+        }
     </div>
   </mat-card-header>
   <mat-card-content>

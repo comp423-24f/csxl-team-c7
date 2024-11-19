@@ -46,9 +46,12 @@ class OrganizationEntity(EntityBase):
     youtube: Mapped[str] = mapped_column(String)
     # Heel Life for the organization
     heel_life: Mapped[str] = mapped_column(String)
-    # Whether the organization can be joined by anyone or not
+
     public: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
 
+    applications: Mapped[list["OrganizationApplicationEntity"]] = relationship(
+        back_populates="organization", cascade="all, delete"
+    )
     # NOTE: This field establishes a one-to-many relationship between the organizations and events table.
     events: Mapped[list["EventEntity"]] = relationship(
         back_populates="organization", cascade="all,delete"
@@ -82,6 +85,7 @@ class OrganizationEntity(EntityBase):
             instagram=model.instagram,
             linked_in=model.linked_in,
             youtube=model.youtube,
+            application=model.application,
             heel_life=model.heel_life,
             public=model.public,
         )
@@ -107,6 +111,7 @@ class OrganizationEntity(EntityBase):
             linked_in=self.linked_in,
             youtube=self.youtube,
             heel_life=self.heel_life,
+            application=self.application,
             public=self.public,
         )
 
@@ -131,6 +136,7 @@ class OrganizationEntity(EntityBase):
             linked_in=self.linked_in,
             youtube=self.youtube,
             heel_life=self.heel_life,
+            application=self.application,
             public=self.public,
             events=[event.to_overview_model() for event in self.events],
         )

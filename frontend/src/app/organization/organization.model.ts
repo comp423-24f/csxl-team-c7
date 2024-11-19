@@ -19,6 +19,7 @@ export interface Organization {
   instagram: string;
   linked_in: string;
   youtube: string;
+  application: string;
   heel_life: string;
   public: boolean;
   slug: string;

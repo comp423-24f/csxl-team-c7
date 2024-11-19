@@ -34,6 +34,7 @@ export const organizationResolver: ResolveFn<Organization | undefined> = (
       instagram: '',
       linked_in: '',
       youtube: '',
+      application: '',
       heel_life: '',
       public: false,
       events: null

@@ -26,6 +26,7 @@ cads = Organization(
     instagram="https://www.instagram.com/carolinadatascience/",
     linked_in="https://www.linkedin.com/company/carolina-data/",
     youtube="https://www.youtube.com/channel/UCO44Yjhjuo5-TLUCAaP0-cQ",
+    application="",
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
 )
@@ -43,6 +44,7 @@ cssg = Organization(
     instagram="https://www.instagram.com/unc_cssg/",
     linked_in="",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/cssg",
     public=False,
 )
@@ -60,6 +62,7 @@ appteam = Organization(
     instagram="https://www.instagram.com/appteamcarolina/",
     linked_in="https://www.linkedin.com/company/appteamcarolina",
     youtube="",
+    application="",
     heel_life="https://heellife.unc.edu/organization/appteamcarolina",
     public=False,
 )
@@ -79,6 +82,7 @@ to_add = Organization(
     instagram="",
     linked_in="",
     youtube="",
+    application="",
     heel_life="",
     public=True,
 )
@@ -96,6 +100,7 @@ to_add_conflicting_id = Organization(
     instagram="",
     linked_in="",
     youtube="",
+    application="",
     heel_life="",
     public=True,
 )
@@ -113,6 +118,7 @@ new_cads = Organization(
     instagram="https://www.instagram.com/carolinadatascience/",
     linked_in="https://www.linkedin.com/company/carolina-data/",
     youtube="https://www.youtube.com/channel/UCO44Yjhjuo5-TLUCAaP0-cQ",
+    application="",
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
 )

@@ -18,7 +18,9 @@ const routes: Routes = [
   OrganizationAdminComponent.Route,
   OrganizationPageComponent.Route,
   OrganizationDetailsComponent.Route,
-  OrganizationEditorComponent.Route
+  OrganizationEditorComponent.Route,
+  OrganizationApplicationComponent.Route,
+  OrganizationApplicationsListComponent.Route
 ];
 
 @NgModule({

@@ -115,6 +115,19 @@ class OrganizationService:
 
         return organization.to_details_model()
 
+    def get_user(self, user: User) -> User:
+        """
+        Retrieve a User from the organization
+        If none found with that id, return None.
+
+        Parameters:
+            user: a valid User model representing the requested User.
+
+        Returns:
+            User: User object if they are in org
+            None: If User is not in org
+        """
+
     def update(self, subject: User, organization: Organization) -> Organization:
         """
         Update the organization

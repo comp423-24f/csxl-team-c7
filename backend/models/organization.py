@@ -28,5 +28,6 @@ class Organization(BaseModel):
     heel_life: str
     public: bool
     needs_application: bool
+    open_status: bool
     # is_open_to_join: bool
     # user_role: str

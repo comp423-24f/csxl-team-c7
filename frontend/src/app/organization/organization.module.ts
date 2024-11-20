@@ -43,6 +43,7 @@ import { SharedModule } from '../shared/shared.module';
 import { OrganizationDetailsInfoCard } from './widgets/organization-details-info-card/organization-details-info-card.widget';
 import { OrganizationEditorComponent } from '/workspace/frontend/src/app/organization/organization-editor/organization-editor.component';
 import { OrganizationNotFoundCard } from './widgets/organization-not-found-card/organization-not-found-card.widget';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { OrganizationNotFoundCard } from './widgets/organization-not-found-card/
     MatTooltipModule,
     OrganizationRoutingModule,
     RouterModule,
+    MatChipsModule,
     SharedModule
   ]
 })

@@ -34,7 +34,7 @@ def upgrade() -> None:
         sa.Column("heel_life", sa.String(), nullable=True),
         sa.Column("public", sa.Boolean(), nullable=False, default=True),
         sa.Column("needs_application", sa.Boolean(), nullable=False, default=False),
-        sa.Column("status", sa.String(), nullable=False),
+        sa.Column("open_status", sa.Boolean(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
 

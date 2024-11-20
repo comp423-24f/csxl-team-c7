@@ -56,6 +56,7 @@ class OrganizationEntity(EntityBase):
     # Whether the organization can be joined by anyone or not
     public: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     needs_application: Mapped[bool] = mapped_column(Boolean, default=False)
+    open_status: Mapped[bool] = mapped_column(Boolean, default=True)
 
     # NOTE: This field establishes a one-to-many relationship between the organizations and events table.
     events: Mapped[list["EventEntity"]] = relationship(
@@ -93,6 +94,7 @@ class OrganizationEntity(EntityBase):
             heel_life=model.heel_life,
             public=model.public,
             needs_application=model.needs_application,
+            open_status=model.open_status,
         )
 
     def to_model(self) -> Organization:
@@ -118,6 +120,7 @@ class OrganizationEntity(EntityBase):
             heel_life=self.heel_life,
             public=self.public,
             needs_application=self.needs_application,
+            open_status=self.open_status,
         )
 
     def to_details_model(self) -> OrganizationDetails:
@@ -143,5 +146,6 @@ class OrganizationEntity(EntityBase):
             heel_life=self.heel_life,
             public=self.public,
             needs_application=self.needs_application,
+            open_status=self.open_status,
             events=[event.to_overview_model() for event in self.events],
         )

@@ -84,7 +84,6 @@ cads = Organization(
     public=True,
     needs_application=False,
 )
-
 carvr = OrganizationEntity(
     id=5,
     name="Carolina Augmented and Virtual Reality",

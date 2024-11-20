@@ -206,6 +206,15 @@ class OrganizationService:
         self._session.commit()
 
     def is_member(self, user_id: int, organization_slug: str) -> bool:
+        organization = (
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .one_or_none()
+        )
+        if not organization:
+            raise ResourceNotFoundException(
+                f"Organization {organization_slug} not found"
+            )
         return bool(
             self._session.query(OrganizationEntity)
             .filter(OrganizationEntity.slug == organization_slug)

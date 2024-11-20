@@ -162,3 +162,62 @@ def test_delete_organization_does_not_exist(
     """Test deleting an organization that does not exist."""
     with pytest.raises(ResourceNotFoundException):
         organization_svc_integration.delete(root, to_add.slug)
+
+
+# start our tests
+def test_add_member_to_organization(
+    organization_svc_integration: OrganizationService,
+):
+    """Test that the root user can add a member to an organization."""
+    organization_svc_integration.add_member(root, cads.slug)
+    # Check if the user was successfully added
+    assert organization_svc_integration.is_member(root.id, cads.slug)
+
+
+def test_add_member_organization_does_not_exist(
+    organization_svc_integration: OrganizationService,
+):
+    """Test that adding a member to a non-existent organization raises an error."""
+    with pytest.raises(ResourceNotFoundException):
+        organization_svc_integration.add_member(root, to_add.slug)
+
+
+# Test `OrganizationService.remove_member()`
+
+
+def test_remove_member_from_organization(
+    organization_svc_integration: OrganizationService,
+):
+    """Test that the root user can remove a member from an organization."""
+    # First, add the user
+    organization_svc_integration.add_member(root, cads.slug)
+    # Now remove the user
+    organization_svc_integration.remove_member(root, cads.slug)
+    # Check that the user is no longer a member
+    assert not organization_svc_integration.is_member(root.id, cads.slug)
+
+
+def test_remove_member_organization_does_not_exist(
+    organization_svc_integration: OrganizationService,
+):
+    """Test that removing a member from a non-existent organization raises an error."""
+    with pytest.raises(ResourceNotFoundException):
+        organization_svc_integration.remove_member(root, to_add.slug)
+
+
+def test_is_member(organization_svc_integration: OrganizationService):
+    """Test that `is_member` correctly identifies whether a user is a member of an organization."""
+    # First, add the user
+    organization_svc_integration.add_member(root, cads.slug)
+    assert organization_svc_integration.is_member(root.id, cads.slug) is True
+    # Then remove the user
+    organization_svc_integration.remove_member(root, cads.slug)
+    assert organization_svc_integration.is_member(root.id, cads.slug) is False
+
+
+def test_is_member_organization_does_not_exist(
+    organization_svc_integration: OrganizationService,
+):
+    """Test that `is_member` raises an error if the organization does not exist."""
+    with pytest.raises(ResourceNotFoundException):
+        organization_svc_integration.is_member(root.id, "fake slug")

@@ -1,0 +1,2 @@
+ALTER TABLE organization
+ADD COLUMN needs_application BOOLEAN DEFAULT FALSE NOT NULL;

@@ -29,6 +29,7 @@ cads = Organization(
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
     needs_application=False,
+    open_status=True,
 )
 
 cssg = Organization(
@@ -47,6 +48,7 @@ cssg = Organization(
     heel_life="https://heellife.unc.edu/organization/cssg",
     public=False,
     needs_application=False,
+    open_status=True,
 )
 
 appteam = Organization(
@@ -65,6 +67,7 @@ appteam = Organization(
     heel_life="https://heellife.unc.edu/organization/appteamcarolina",
     public=False,
     needs_application=False,
+    open_status=True,
 )
 
 organizations = [cads, cssg, appteam]
@@ -85,6 +88,7 @@ to_add = Organization(
     heel_life="",
     public=True,
     needs_application=False,
+    open_status=True,
 )
 
 to_add_conflicting_id = Organization(
@@ -103,6 +107,7 @@ to_add_conflicting_id = Organization(
     heel_life="",
     public=True,
     needs_application=False,
+    open_status=True,
 )
 
 new_cads = Organization(
@@ -121,6 +126,7 @@ new_cads = Organization(
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
     needs_application=False,
+    open_status=True,
 )
 
 # Data Functions

@@ -22,6 +22,7 @@ export interface Organization {
   heel_life: string;
   public: boolean;
   needs_application: boolean;
+  open_status: boolean;
   slug: string;
   shorthand: string;
   events: Event[] | null;

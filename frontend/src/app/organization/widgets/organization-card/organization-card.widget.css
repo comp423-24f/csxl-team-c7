@@ -86,6 +86,11 @@
     z-index: 0 !important;
 }
 
+.open-status {
+    text-decoration: none;
+    margin-right: 10px;
+}
+
 .details-link {
     text-decoration: none;
     margin-right: 10px;

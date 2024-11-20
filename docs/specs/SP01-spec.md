@@ -8,7 +8,7 @@ SP01 focused on user functionality on determining the status of an organization 
 
 This functionality also allows Admins to determine the state of their organizations, whether it's open, closed, or applicable.
 
-DESCRIPTIONS AND SAMPLE DATA
+**DESCRIPTIONS AND SAMPLE DATA**
 The OrganizationEntity class in models/organization_entity.py has been updated to support new fields related to the public and application requirements of an organization. These fields are called public and needs_application. An example of the organization entity in a json payload to the front-end is:
 {
 "id": 1,
@@ -31,13 +31,13 @@ Furthermore, we support the ability for the change in publicity or whether or no
 “public”: true, to “public”: false.
 This updates the UI for all potential applicants as the org cannot be applied for and needs_application will also be set to false regardless of what the previous value was.
 
-DATABASE/ENTITY DECISIONS
+**DATABASE/ENTITY DECISIONS**
 Many-to-Many Relationship Representation in the database overall: The relationship between users and clubs is inherently many-to-many because a single user can join multiple orgs and a single org can have multiple members. To implement this relationship, we use a table to connect the users to their organizations and then that is then reflected in their personal UI experience.
 Some specific entity decisions are that users can apply to many clubs due to specific different attributes and clubs can have many users as we spoke about above, and this allows clubs and users to grow in number without facing number constraints or scalability issues.
 
-DECISIONS/TRADEOFFS
-UX Decision- We decided to add the ability to see what an organization’s current application status is directly on the individual organization widget i.e. closed, open, apply. Although a tradeoff for this may be more clustered buttons in the UI page for users, we believe it’s important for users to have information immediately about the application status of clubs instead of having to click through the details every time.
-Technical Decision- Ability for users to automatically join clubs whenever they please directly from the CSXL website. A tradeoff is that this may lead to confusion because generally HeelLife has been used to do applications and this is where you are accepted. However, we think this leads closer to an overall CSXL website that can host all these functionalities related to applications.
+**DECISIONS/TRADEOFFS**
+**UX Decision-** We decided to add the ability to see what an organization’s current application status is directly on the individual organization widget i.e. closed, open, apply. Although a tradeoff for this may be more clustered buttons in the UI page for users, we believe it’s important for users to have information immediately about the application status of clubs instead of having to click through the details every time.
+**Technical Decision-** Ability for users to automatically join clubs whenever they please directly from the CSXL website. A tradeoff is that this may lead to confusion because generally HeelLife has been used to do applications and this is where you are accepted. However, we think this leads closer to an overall CSXL website that can host all these functionalities related to applications.
 
 DEVELOPMENT DECISIONS
 Frontend

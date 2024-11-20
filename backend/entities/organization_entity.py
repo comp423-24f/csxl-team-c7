@@ -55,6 +55,7 @@ class OrganizationEntity(EntityBase):
     # user_role: Mapped[str] = mapped_column(String)
     # Whether the organization can be joined by anyone or not
     public: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    needs_application: Mapped[bool] = mapped_column(Boolean, default=False)
 
     # NOTE: This field establishes a one-to-many relationship between the organizations and events table.
     events: Mapped[list["EventEntity"]] = relationship(

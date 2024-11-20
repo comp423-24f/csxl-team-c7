@@ -32,6 +32,15 @@
     [routerLink]="['/organizations', organization.slug]">
     <button mat-flat-button>Details</button>
   </a>
+
+  @if (organization.needs_application){
+  <a
+    class="details-link"
+    [routerLink]="['/events']">
+    <button mat-flat-button>Apply</button>
+  </a>
+}
+
   
   <!-- <button mat-icon-button class="mat-csxl-stroked-icon-button" id="events-button" color="basic">
     <mat-icon>event</mat-icon>

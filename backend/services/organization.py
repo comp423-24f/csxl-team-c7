@@ -45,7 +45,13 @@ class OrganizationService:
         entities = self._session.scalars(query).all()
 
         # Convert entries to a model and return
-        return [entity.to_model() for entity in entities]
+        organizations = []
+        for entity in entities:
+            organization = entity.to_model()
+            organizations.append(organization)
+        return organizations
+
+        # return [entity.to_model() for entity in entities]
 
     def create(self, subject: User, organization: Organization) -> Organization:
         """

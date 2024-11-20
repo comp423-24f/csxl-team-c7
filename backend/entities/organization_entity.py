@@ -6,6 +6,7 @@ from .entity_base import EntityBase
 from typing import Self
 from ..models.organization import Organization
 from ..models.organization_details import OrganizationDetails
+from .user_organization_table import user_organization_table
 
 __authors__ = ["Ajay Gandecha", "Jade Keegan", "Brianna Ta", "Audrey Toney"]
 __copyright__ = "Copyright 2023"
@@ -19,6 +20,10 @@ class OrganizationEntity(EntityBase):
     __tablename__ = "organization"
 
     # Organization properties (columns in the database table)
+    users: Mapped[list["UserEntity"]] = relationship(
+        secondary=user_organization_table,
+        back_populates="organizations",
+    )
 
     # Unique ID for the organization
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
@@ -46,8 +51,11 @@ class OrganizationEntity(EntityBase):
     youtube: Mapped[str] = mapped_column(String)
     # Heel Life for the organization
     heel_life: Mapped[str] = mapped_column(String)
+    # is_open_to_join: Mapped[bool] = mapped_column(Boolean)
+    # user_role: Mapped[str] = mapped_column(String)
     # Whether the organization can be joined by anyone or not
     public: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
+    needs_application: Mapped[bool] = mapped_column(Boolean, default=False)
 
     # NOTE: This field establishes a one-to-many relationship between the organizations and events table.
     events: Mapped[list["EventEntity"]] = relationship(
@@ -84,6 +92,7 @@ class OrganizationEntity(EntityBase):
             youtube=model.youtube,
             heel_life=model.heel_life,
             public=model.public,
+            needs_application=model.needs_application,
         )
 
     def to_model(self) -> Organization:
@@ -108,6 +117,7 @@ class OrganizationEntity(EntityBase):
             youtube=self.youtube,
             heel_life=self.heel_life,
             public=self.public,
+            needs_application=self.needs_application,
         )
 
     def to_details_model(self) -> OrganizationDetails:
@@ -132,5 +142,6 @@ class OrganizationEntity(EntityBase):
             youtube=self.youtube,
             heel_life=self.heel_life,
             public=self.public,
+            needs_application=self.needs_application,
             events=[event.to_overview_model() for event in self.events],
         )

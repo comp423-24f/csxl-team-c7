@@ -10,6 +10,7 @@ from .entity_base import EntityBase
 from .user_role_table import user_role_table
 from ..models import User, PublicUser
 from .article_author_entity import article_author_table
+from .user_organization_table import user_organization_table
 
 __authors__ = ["Kris Jordan", "Matt Vu", "Ajay Gandecha"]
 __copyright__ = "Copyright 2023 - 2024"
@@ -21,6 +22,10 @@ class UserEntity(EntityBase):
 
     # Name for the user table in the PostgreSQL database
     __tablename__ = "user"
+    organizations: Mapped[list["OrganizationEntity"]] = relationship(
+        secondary=user_organization_table,
+        back_populates="users",
+    )
 
     # Unique ID for the user entry
     id: Mapped[int] = mapped_column(Integer, primary_key=True)

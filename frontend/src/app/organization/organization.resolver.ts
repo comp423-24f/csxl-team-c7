@@ -35,6 +35,7 @@ export const organizationResolver: ResolveFn<Organization | undefined> = (
       linked_in: '',
       youtube: '',
       heel_life: '',
+      needs_application: false,
       public: false,
       events: null
     };

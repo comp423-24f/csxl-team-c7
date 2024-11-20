@@ -21,6 +21,7 @@ export interface Organization {
   youtube: string;
   heel_life: string;
   public: boolean;
+  needs_application: boolean;
   slug: string;
   shorthand: string;
   events: Event[] | null;

@@ -28,6 +28,7 @@ cads = Organization(
     youtube="https://www.youtube.com/channel/UCO44Yjhjuo5-TLUCAaP0-cQ",
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
+    needs_application=False,
 )
 
 cssg = Organization(
@@ -45,6 +46,7 @@ cssg = Organization(
     youtube="",
     heel_life="https://heellife.unc.edu/organization/cssg",
     public=False,
+    needs_application=False,
 )
 
 appteam = Organization(
@@ -62,6 +64,7 @@ appteam = Organization(
     youtube="",
     heel_life="https://heellife.unc.edu/organization/appteamcarolina",
     public=False,
+    needs_application=False,
 )
 
 organizations = [cads, cssg, appteam]
@@ -81,6 +84,7 @@ to_add = Organization(
     youtube="",
     heel_life="",
     public=True,
+    needs_application=False,
 )
 
 to_add_conflicting_id = Organization(
@@ -98,6 +102,7 @@ to_add_conflicting_id = Organization(
     youtube="",
     heel_life="",
     public=True,
+    needs_application=False,
 )
 
 new_cads = Organization(
@@ -115,6 +120,7 @@ new_cads = Organization(
     youtube="https://www.youtube.com/channel/UCO44Yjhjuo5-TLUCAaP0-cQ",
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
+    needs_application=False,
 )
 
 # Data Functions

@@ -5,6 +5,7 @@ Revises: 48c0ecafd25a
 Create Date: 2023-09-12 10:28:16.426542
 
 """
+
 from alembic import op
 import sqlalchemy as sa
 
@@ -32,6 +33,8 @@ def upgrade() -> None:
         sa.Column("youtube", sa.String(), nullable=True),
         sa.Column("heel_life", sa.String(), nullable=True),
         sa.Column("public", sa.Boolean(), nullable=False, default=True),
+        sa.Column("needs_application", sa.Boolean(), nullable=False, default=False),
+        sa.Column("status", sa.String(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
 

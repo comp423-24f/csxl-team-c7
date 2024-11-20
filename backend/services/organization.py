@@ -6,6 +6,8 @@ from fastapi import Depends
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from backend.entities.user_entity import UserEntity
+
 from ..database import db_session
 from ..models.organization import Organization
 from ..models.organization_details import OrganizationDetails
@@ -171,6 +173,45 @@ class OrganizationService:
 
         # Return updated object
         return obj.to_model()
+
+    def add_member(self, subject: User, organization_slug: str) -> OrganizationDetails:
+        organization = (
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .one_or_none()
+        )
+        if not organization:
+            raise ResourceNotFoundException(
+                f"Organization {organization_slug} not found"
+            )
+
+        user = self._session.query(UserEntity).filter(UserEntity.id == subject.id).one()
+        organization.users.append(user)
+        self._session.commit()
+        return organization.to_model()
+
+    def remove_member(self, subject: User, organization_slug: str) -> None:
+        organization = (
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .one_or_none()
+        )
+        if not organization:
+            raise ResourceNotFoundException(
+                f"Organization {organization_slug} not found"
+            )
+
+        user = self._session.query(UserEntity).filter(UserEntity.id == subject.id).one()
+        organization.users.remove(user)
+        self._session.commit()
+
+    def is_member(self, user_id: int, organization_slug: str) -> bool:
+        return bool(
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .filter(OrganizationEntity.users.any(id=user_id))
+            .one_or_none()
+        )
 
     def delete(self, subject: User, slug: str) -> None:
         """

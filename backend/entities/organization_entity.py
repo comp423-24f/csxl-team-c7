@@ -147,5 +147,6 @@ class OrganizationEntity(EntityBase):
             public=self.public,
             needs_application=self.needs_application,
             open_status=self.open_status,
+            users=[user.to_model() for user in self.users],
             events=[event.to_overview_model() for event in self.events],
         )

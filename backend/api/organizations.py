@@ -141,3 +141,33 @@ def delete_organization(
     """
 
     organization_service.delete(subject, slug)
+
+
+@api.post("/{slug}/join", response_model=Organization, tags=["Organizations"])
+def join_organization(
+    slug: str,
+    subject: User = Depends(registered_user),
+    organization_service: OrganizationService = Depends(),
+) -> Organization:
+    """Join an organization"""
+    return organization_service.add_member(subject, slug)
+
+
+@api.post("/{slug}/leave", response_model=None, tags=["Organizations"])
+def leave_organization(
+    slug: str,
+    subject: User = Depends(registered_user),
+    organization_service: OrganizationService = Depends(),
+):
+    """Leave an organization"""
+    organization_service.remove_member(subject, slug)
+
+
+@api.get("/{slug}/membership", response_model=bool, tags=["Organizations"])
+def check_membership(
+    slug: str,
+    subject: User = Depends(registered_user),
+    organization_service: OrganizationService = Depends(),
+) -> bool:
+    """Check if user is member of organization"""
+    return organization_service.is_member(subject.id, slug)

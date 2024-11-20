@@ -41,10 +41,12 @@
     <mat-chip>Closed</mat-chip>
   } @else if (organization.needs_application) {
     <a [routerLink]="['/organizations', organization.slug, 'apply']">
-      <button mat-flat-button>Apply</button>
+      <mat-chip>Apply</mat-chip>
     </a>
   } @else if (organization.public) {
-    <mat-chip>Open</mat-chip>
+    <a [href]="organization.heel_life" target="_blank" rel="noopener">
+      <mat-chip>Open</mat-chip>
+    </a>
   }
 
   

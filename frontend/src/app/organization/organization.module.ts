@@ -33,7 +33,7 @@ import { OrganizationPageComponent } from './organization-page/organization-page
 import { OrganizationRoutingModule } from './organization-routing.module';
 import { OrganizationDetailsComponent } from './organization-details/organization-details.component';
 import { OrganizationAdminComponent } from './organization-admin/organization-admin.component';
-
+import { OrganizationApplyComponent } from './organization-apply/organization-apply.component';
 import { OrganizationFilterPipe } from './pipes/organization-filter.pipe';
 
 /* UI Widgets */
@@ -50,6 +50,7 @@ import { OrganizationNotFoundCard } from './widgets/organization-not-found-card/
     OrganizationDetailsComponent,
     OrganizationEditorComponent,
     OrganizationAdminComponent,
+    OrganizationApplyComponent,
 
     // Pipes
     OrganizationFilterPipe,

@@ -27,3 +27,5 @@ class Organization(BaseModel):
     youtube: str
     heel_life: str
     public: bool
+    # is_open_to_join: bool
+    # user_role: str

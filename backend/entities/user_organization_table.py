@@ -1,6 +1,6 @@
 """Join table of membership between User and Organization entities.""" ""
 
-from sqlalchemy import Table, Column, ForeignKey
+from sqlalchemy import Table, Column, ForeignKey, String
 from .entity_base import EntityBase
 
 user_organization_table = Table(
@@ -8,4 +8,5 @@ user_organization_table = Table(
     EntityBase.metadata,
     Column("user_id", ForeignKey("user.id"), primary_key=True),
     Column("organization_id", ForeignKey("organization.id"), primary_key=True),
+    Column("role", String),
 )

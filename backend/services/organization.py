@@ -48,23 +48,10 @@ class OrganizationService:
         organizations = []
         for entity in entities:
             organization = entity.to_model()
-            OrganizationService.is_open(organization)
             organizations.append(organization)
         return organizations
 
         # return [entity.to_model() for entity in entities]
-
-    def is_open(self, org: OrganizationEntity) -> None:
-        if (org.public):
-            if(org.needs_application == True):
-                #add application button logic
-            else:
-                #add open to all button logic
-        else:
-            org.public = False
-            org.needs_application = False
-            #add closed button logic
-            
 
     def create(self, subject: User, organization: Organization) -> Organization:
         """

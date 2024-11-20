@@ -92,6 +92,7 @@ class OrganizationEntity(EntityBase):
             youtube=model.youtube,
             heel_life=model.heel_life,
             public=model.public,
+            needs_application=model.needs_application,
         )
 
     def to_model(self) -> Organization:
@@ -116,6 +117,7 @@ class OrganizationEntity(EntityBase):
             youtube=self.youtube,
             heel_life=self.heel_life,
             public=self.public,
+            needs_application=self.needs_application,
         )
 
     def to_details_model(self) -> OrganizationDetails:
@@ -140,5 +142,6 @@ class OrganizationEntity(EntityBase):
             youtube=self.youtube,
             heel_life=self.heel_life,
             public=self.public,
+            needs_application=self.needs_application,
             events=[event.to_overview_model() for event in self.events],
         )

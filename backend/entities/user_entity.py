@@ -5,7 +5,9 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Self
 
 from backend.entities.academics.section_member_entity import SectionMemberEntity
+from backend.entities.organization_entity import OrganizationEntity
 from backend.models.academics.section_member import SectionMember
+from backend.models.user_details import UserDetails
 from .entity_base import EntityBase
 from .user_role_table import user_role_table
 from ..models import User, PublicUser
@@ -155,6 +157,28 @@ class UserEntity(EntityBase):
             website=self.website,
         )
 
+    def to_details_model(self) -> UserDetails:
+        return UserDetails(
+            id=self.id,
+            pid=self.pid,
+            onyen=self.onyen,
+            email=self.email,
+            first_name=self.first_name,
+            last_name=self.last_name,
+            github=self.github,
+            github_id=self.github_id,
+            github_avatar=self.github_avatar,
+            pronouns=self.pronouns,
+            accepted_community_agreement=self.accepted_community_agreement,
+            bio=self.bio,
+            linkedin=self.linkedin,
+            website=self.website,
+            permissions=self.permissions,
+            applications=self.applications,
+            sections=self.sections,
+            organizations=[org.to_model() for org in self.organizations],
+        )
+
     def update(self, model: User) -> None:
         """
         Update a UserEntity from a User model.
@@ -176,6 +200,10 @@ class UserEntity(EntityBase):
         self.bio = model.bio
         self.linkedin = model.linkedin
         self.website = model.website
+        if hasattr(model, "organizations"):
+            self.organizations = [
+                OrganizationEntity.from_model(org) for org in model.organizations
+            ]
 
     def to_public_model(self) -> PublicUser:
         return PublicUser(

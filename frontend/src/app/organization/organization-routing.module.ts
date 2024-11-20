@@ -13,12 +13,14 @@ import { OrganizationPageComponent } from './organization-page/organization-page
 import { OrganizationDetailsComponent } from './organization-details/organization-details.component';
 import { OrganizationEditorComponent } from './organization-editor/organization-editor.component';
 import { OrganizationAdminComponent } from './organization-admin/organization-admin.component';
+import { OrganizationApplyComponent } from './organization-apply/organization-apply.component';
 
 const routes: Routes = [
   OrganizationAdminComponent.Route,
   OrganizationPageComponent.Route,
   OrganizationDetailsComponent.Route,
-  OrganizationEditorComponent.Route
+  OrganizationEditorComponent.Route,
+  OrganizationApplyComponent.Route
 ];
 
 @NgModule({

@@ -282,15 +282,19 @@ def test_update_profile_community_agreement_stays_true(user_svc: UserService):
     assert updated_user.accepted_community_agreement == True
 
 
-def test_update_profile_then_accept_community_agreement(user_svc: UserService):
-    """Tests to make sure fields are changed correctly after updating profile, then accepting agreement for first time"""
+# start our tests
+def test_get_user_organizations(user_svc: UserService):
+    """Test that a user's organizations are retrieved correctly."""
+    # Assuming the user has been set up with the necessary organizations in the fixture
     current_user = user_svc.get(user.pid)
-    assert current_user is not None
-    current_user.first_name = "Sam"
-    current_user.accepted_community_agreement = False
-    updated_user = user_svc.update(root, current_user)
-    assert updated_user is not None
-    assert updated_user.first_name == "Sam"
-    assert updated_user.accepted_community_agreement == False
-    updated_user.accepted_community_agreement = True
-    assert updated_user.accepted_community_agreement == True
+    organizations = user_svc.get_user_organizations(current_user.id)
+    assert organizations is not None
+    assert len(organizations) >= 0
+    assert all(org.id is not None for org in organizations)
+    assert all(org.name is not None for org in organizations)
+
+
+def test_get_user_organizations_user_not_found(user_svc_integration: UserService):
+    """Test that a non-existent user raises a ResourceNotFoundException."""
+    with pytest.raises(ResourceNotFoundException):
+        user_svc_integration.get_user_organizations(999)

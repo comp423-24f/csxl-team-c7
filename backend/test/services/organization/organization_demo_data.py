@@ -29,6 +29,7 @@ appteam = OrganizationEntity(
     heel_life="https://heellife.unc.edu/organization/appteamcarolina",
     public=False,
     needs_application=True,
+    open_status=True,
 )
 
 acm = OrganizationEntity(
@@ -47,6 +48,7 @@ acm = OrganizationEntity(
     heel_life="https://heellife.unc.edu/organization/acm-at-carolina",
     public=False,
     needs_application=True,
+    open_status=True,
 )
 
 bit = OrganizationEntity(
@@ -63,8 +65,9 @@ bit = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/bit",
-    public=False,
-    needs_application=True,
+    public=True,
+    needs_application=False,
+    open_status=True,
 )
 
 cads = Organization(
@@ -83,8 +86,8 @@ cads = Organization(
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
     needs_application=False,
+    open_status=True,
 )
-
 carvr = OrganizationEntity(
     id=5,
     name="Carolina Augmented and Virtual Reality",
@@ -100,7 +103,8 @@ carvr = OrganizationEntity(
     youtube="",
     heel_life="https://heellife.unc.edu/organization/carvr",
     public=False,
-    needs_application=False,
+    needs_application=True,
+    open_status=True,
 )
 
 cssg = Organization(
@@ -118,7 +122,8 @@ cssg = Organization(
     youtube="",
     heel_life="https://heellife.unc.edu/organization/cssg",
     public=False,
-    needs_application=False,
+    needs_application=True,
+    open_status=True,
 )
 
 ctf = OrganizationEntity(
@@ -135,8 +140,9 @@ ctf = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/ntropy-unc",
-    public=False,
+    public=True,
     needs_application=False,
+    open_status=True,
 )
 
 enablingtech = OrganizationEntity(
@@ -153,8 +159,9 @@ enablingtech = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/enablingtechnologyclub",
-    public=False,
+    public=True,
     needs_application=False,
+    open_status=True,
 )
 
 esports = OrganizationEntity(
@@ -171,8 +178,9 @@ esports = OrganizationEntity(
     linked_in="",
     youtube="https://www.youtube.com/carolinaesports",
     heel_life="https://heellife.unc.edu/organization/esports",
-    public=False,
+    public=True,
     needs_application=False,
+    open_status=True,
 )
 
 gamedev = OrganizationEntity(
@@ -190,7 +198,8 @@ gamedev = OrganizationEntity(
     youtube="",
     heel_life="https://heellife.unc.edu/organization/uncgamedev",
     public=False,
-    needs_application=False,
+    needs_application=True,
+    open_status=True,
 )
 
 gwc = OrganizationEntity(
@@ -207,8 +216,9 @@ gwc = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="",
-    public=False,
+    public=True,
     needs_application=False,
+    open_status=True,
 )
 
 hacknc = OrganizationEntity(
@@ -227,6 +237,7 @@ hacknc = OrganizationEntity(
     heel_life="https://heellife.unc.edu/organization/hacknc",
     public=False,
     needs_application=False,
+    open_status=False,
 )
 
 ktp = OrganizationEntity(
@@ -245,6 +256,7 @@ ktp = OrganizationEntity(
     heel_life="https://heellife.unc.edu/organization/uncktp",
     public=False,
     needs_application=False,
+    open_status=False,
 )
 
 pearlhacks = OrganizationEntity(
@@ -262,7 +274,8 @@ pearlhacks = OrganizationEntity(
     youtube="",
     heel_life="https://heellife.unc.edu/organization/pearlhacks",
     public=False,
-    needs_application=False,
+    needs_application=True,
+    open_status=True,
 )
 
 pm = OrganizationEntity(
@@ -280,7 +293,8 @@ pm = OrganizationEntity(
     youtube="",
     heel_life="",
     public=False,
-    needs_application=False,
+    needs_application=True,
+    open_status=True,
 )
 
 queerhack = OrganizationEntity(
@@ -297,8 +311,9 @@ queerhack = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/queer_hack",
-    public=False,
+    public=True,
     needs_application=False,
+    open_status=True,
 )
 
 wics = OrganizationEntity(
@@ -315,8 +330,9 @@ wics = OrganizationEntity(
     linked_in="",
     youtube="",
     heel_life="https://heellife.unc.edu/organization/wins",
-    public=False,
+    public=True,
     needs_application=False,
+    open_status=True,
 )
 
 organizations = [

@@ -33,7 +33,7 @@ import { OrganizationPageComponent } from './organization-page/organization-page
 import { OrganizationRoutingModule } from './organization-routing.module';
 import { OrganizationDetailsComponent } from './organization-details/organization-details.component';
 import { OrganizationAdminComponent } from './organization-admin/organization-admin.component';
-
+import { OrganizationApplyComponent } from './organization-apply/organization-apply.component';
 import { OrganizationFilterPipe } from './pipes/organization-filter.pipe';
 
 /* UI Widgets */
@@ -43,6 +43,7 @@ import { SharedModule } from '../shared/shared.module';
 import { OrganizationDetailsInfoCard } from './widgets/organization-details-info-card/organization-details-info-card.widget';
 import { OrganizationEditorComponent } from '/workspace/frontend/src/app/organization/organization-editor/organization-editor.component';
 import { OrganizationNotFoundCard } from './widgets/organization-not-found-card/organization-not-found-card.widget';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { OrganizationNotFoundCard } from './widgets/organization-not-found-card/
     OrganizationDetailsComponent,
     OrganizationEditorComponent,
     OrganizationAdminComponent,
+    OrganizationApplyComponent,
 
     // Pipes
     OrganizationFilterPipe,
@@ -78,6 +80,7 @@ import { OrganizationNotFoundCard } from './widgets/organization-not-found-card/
     MatTooltipModule,
     OrganizationRoutingModule,
     RouterModule,
+    MatChipsModule,
     SharedModule
   ]
 })

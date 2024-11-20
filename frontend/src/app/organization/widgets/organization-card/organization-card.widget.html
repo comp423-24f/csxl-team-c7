@@ -27,30 +27,29 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <a
-    class="details-link"
-    [routerLink]="['/organizations', organization.slug]">
-    <button mat-flat-button>Details</button>
-  </a>
-
-  @if (organization.needs_application){
-  <a
-    class="details-link"
-    [routerLink]="['/events']">
-    <button mat-flat-button>Apply</button>
-  </a>
-}
-
+    <div class="left-actions">
+      @if (!organization.open_status) {
+        <mat-chip>Closed</mat-chip>
+      } @else if (organization.needs_application) {
+        <a [routerLink]="['/organizations', organization.slug, 'apply']">
+          <mat-chip>Apply</mat-chip>
+        </a>
+      } @else {
+        @if (isMember) {
+          <mat-chip (click)="leave()">Leave</mat-chip>
+        } @else {
+          <mat-chip (click)="join()">Join</mat-chip>
+        }
+      }
+    </div>
   
-  <!-- <button mat-icon-button class="mat-csxl-stroked-icon-button" id="events-button" color="basic">
-    <mat-icon>event</mat-icon>
-  </button> -->
-
-  @if (organization.website !== '') {
-    <social-media-icon id="events-button" [fontIcon]="'link'" [href]="organization.website" />
-  }
-
-
-
+    <div class="right-actions">
+      <a class="details-link" [routerLink]="['/organizations', organization.slug]">
+        <button mat-flat-button>Details</button>
+      </a>
+      @if (organization.website !== '') {
+        <social-media-icon [fontIcon]="'link'" [href]="organization.website" />
+      }
+    </div>
   </mat-card-actions>
 </mat-pane>

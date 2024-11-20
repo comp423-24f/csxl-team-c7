@@ -6,11 +6,14 @@ The User Service provides access to the User model and its associated database o
 from fastapi import Depends
 from sqlalchemy import select, or_, func, cast, String
 from sqlalchemy.orm import Session
+
+from backend.models.organization import Organization
 from ..database import db_session
 from ..models import User, UserDetails, Paginated, PaginationParams, PublicUser
 from ..entities import UserEntity
 from .exceptions import ResourceNotFoundException
 from .permission import PermissionService
+from typing import List
 
 __authors__ = ["Kris Jordan"]
 __copyright__ = "Copyright 2023"
@@ -202,3 +205,10 @@ class UserService:
         entity.update(user)
         self._session.commit()
         return entity.to_model()
+
+    def get_user_organizations(self, user_id: int) -> List[Organization]:
+        """Get all organizations a user is member of"""
+        user = self._session.get(UserEntity, user_id)
+        if not user:
+            raise ResourceNotFoundException(f"User {user_id} not found")
+        return [org.to_model() for org in user.organizations]

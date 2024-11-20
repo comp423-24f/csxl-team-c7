@@ -36,7 +36,7 @@
   @if (organization.needs_application){
   <a
     class="details-link"
-    [routerLink]="['/events']">
+    [routerLink]="['/organizations', organization.slug, 'apply']">
     <button mat-flat-button>Apply</button>
   </a>
 }

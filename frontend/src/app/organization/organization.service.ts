@@ -96,6 +96,17 @@ export class OrganizationService {
         )
       );
   }
+  joinOrganization(slug: string): Observable<Organization> {
+    return this.http.post<Organization>(`/api/organizations/${slug}/join`, {});
+  }
+
+  leaveOrganization(slug: string): Observable<Organization> {
+    return this.http.post<Organization>(`/api/organizations/${slug}/leave`, {});
+  }
+
+  isMember(slug: string): Observable<boolean> {
+    return this.http.get<boolean>(`/api/organizations/${slug}/membership`);
+  }
 
   /** Returns the deleted organization object from the backend database table using the backend HTTP delete request
    *  and updates the organizations signal to exclude the deleted organization.

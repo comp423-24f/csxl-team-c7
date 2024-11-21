@@ -77,6 +77,8 @@
     @if(eventCreationPermissions) {
     <mat-divider />
     }
+    <organization-members-card [organization]="organization" />
+
   </mat-card-content>
   <mat-card-actions>
     @if(eventCreationPermissions) {

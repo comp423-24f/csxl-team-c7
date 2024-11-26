@@ -27,4 +27,5 @@ export interface Organization {
   shorthand: string;
   events: Event[] | null;
   users: any;
+  applications: any;
 }

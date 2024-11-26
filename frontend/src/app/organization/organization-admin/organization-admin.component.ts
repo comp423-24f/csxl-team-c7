@@ -25,11 +25,12 @@ export class OrganizationAdminComponent {
   /** Organizations List */
   public organizations: Signal<Organization[]>;
 
-  public displayedColumns: string[] = ['name'];
   /** Profile of signed in user */
   protected profile: Profile;
   /** List of displayed organizations for the signed in user */
   protected displayedOrganizations: Signal<Organization[]>;
+
+  public displayedColumns: string[] = ['name'];
 
   /** Route information to be used in Organization Routing Module */
   public static Route = {
@@ -88,5 +89,8 @@ export class OrganizationAdminComponent {
           });
         });
     });
+  }
+  viewApplications(organization: Organization): void {
+    this.router.navigate(['organizations', organization.slug, 'applications']);
   }
 }

@@ -31,9 +31,13 @@
       @if (!organization.open_status) {
         <mat-chip>Closed</mat-chip>
       } @else if (organization.needs_application) {
-        <a [routerLink]="['/organizations', organization.slug, 'apply']">
-          <mat-chip>Apply</mat-chip>
-        </a>
+        @if (!isMember) {
+          <a [routerLink]="['/organizations', organization.slug, 'apply']">
+            <mat-chip>Apply</mat-chip>
+          </a>
+        } @else {
+          <mat-chip (click)="leave()">Leave</mat-chip>
+        }
       } @else {
         @if (isMember) {
           <mat-chip (click)="leave()">Leave</mat-chip>

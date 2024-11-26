@@ -39,7 +39,8 @@ export const organizationResolver: ResolveFn<Organization | undefined> = (
       open_status: false,
       public: false,
       events: null,
-      users: null
+      users: null,
+      applications: null
     };
   }
 

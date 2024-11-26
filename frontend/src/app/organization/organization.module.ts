@@ -44,8 +44,9 @@ import { OrganizationDetailsInfoCard } from './widgets/organization-details-info
 import { OrganizationEditorComponent } from '/workspace/frontend/src/app/organization/organization-editor/organization-editor.component';
 import { OrganizationNotFoundCard } from './widgets/organization-not-found-card/organization-not-found-card.widget';
 import { OrganizationMembersCard } from './widgets/organization-members-card/organization-members-card.widget';
-import { MatChipsModule } from '@angular/material/chips';
-
+import { MatChipListbox, MatChipsModule } from '@angular/material/chips';
+import { OrganizationApplicationReviewComponent } from './organization-application-review/organization-application-review.component';
+import { ApplicationViewDialogComponent } from './organization-application-review/application-view-widget/application-view-dialog.widget';
 @NgModule({
   declarations: [
     OrganizationPageComponent,
@@ -53,6 +54,8 @@ import { MatChipsModule } from '@angular/material/chips';
     OrganizationEditorComponent,
     OrganizationAdminComponent,
     OrganizationApplyComponent,
+    OrganizationApplicationReviewComponent,
+    ApplicationViewDialogComponent,
 
     // Pipes
     OrganizationFilterPipe,
@@ -83,7 +86,9 @@ import { MatChipsModule } from '@angular/material/chips';
     OrganizationRoutingModule,
     RouterModule,
     MatChipsModule,
-    SharedModule
+    SharedModule,
+    MatChipListbox,
+    ReactiveFormsModule
   ]
 })
 export class OrganizationModule {}

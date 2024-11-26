@@ -6,6 +6,9 @@ from typing import Self
 
 from backend.entities.academics.section_member_entity import SectionMemberEntity
 from backend.entities.organization_entity import OrganizationEntity
+from backend.entities.organization_application_entity import (
+    OrganizationApplicationEntity,
+)
 from backend.models.academics.section_member import SectionMember
 from backend.models.user_details import UserDetails
 from .entity_base import EntityBase
@@ -81,6 +84,9 @@ class UserEntity(EntityBase):
     # The applications for the  user.
     applications: Mapped[list["ApplicationEntity"]] = relationship(
         back_populates="user"
+    )
+    organization_applications: Mapped[list["OrganizationApplicationEntity"]] = (
+        relationship(back_populates="user")
     )
 
     # All of the articles written by this user.
@@ -177,6 +183,9 @@ class UserEntity(EntityBase):
             applications=self.applications,
             sections=self.sections,
             organizations=[org.to_model() for org in self.organizations],
+            organization_applications=[
+                app.to_model() for app in self.organization_applications
+            ],
         )
 
     def update(self, model: User) -> None:

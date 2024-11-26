@@ -26,4 +26,6 @@ export interface Organization {
   slug: string;
   shorthand: string;
   events: Event[] | null;
+  users: any;
+  applications: any;
 }

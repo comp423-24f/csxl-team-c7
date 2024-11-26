@@ -28,9 +28,11 @@ export class OrganizationCard {
   constructor(private organizationService: OrganizationService) {}
 
   ngOnInit() {
-    this.organizationService
-      .isMember(this.organization.slug)
-      .subscribe((result) => (this.isMember = result));
+    if (this.organization.slug) {
+      this.organizationService
+        .isMember(this.organization.slug)
+        .subscribe((result) => (this.isMember = result));
+    }
   }
 
   join() {
@@ -40,8 +42,12 @@ export class OrganizationCard {
   }
 
   leave() {
-    this.organizationService
-      .leaveOrganization(this.organization.slug)
-      .subscribe(() => (this.isMember = false));
+    if (this.organization.slug) {
+      this.organizationService
+        .leaveOrganization(this.organization.slug)
+        .subscribe(() => {
+          this.isMember = false;
+        });
+    }
   }
 }

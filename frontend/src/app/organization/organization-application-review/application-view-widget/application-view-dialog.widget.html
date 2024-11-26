@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Application Details</h2>
+<mat-dialog-content>
+  <div class="application-section">
+    <h3>Interest Statement</h3>
+    <p>{{ data.interest_statement }}</p>
+  </div>
+
+  <div class="application-section">
+    <h3>Experience</h3>
+    <p>{{ data.experience }}</p>
+  </div>
+
+  <div class="application-section">
+    <h3>Expected Graduation</h3>
+    <p>{{ data.expected_graduation }}</p>
+  </div>
+
+  <div class="application-section">
+    <h3>Program of Study</h3>
+    <p>{{ data.program_pursued }}</p>
+  </div>
+
+  <div class="application-section">
+    <h3>Additional Information</h3>
+    <p>{{ data.additional_info }}</p>
+  </div>
+
+  <div class="application-section">
+    <h3>Status</h3>
+    <p>{{ data.status }}</p>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]>Close</button>
+</mat-dialog-actions>

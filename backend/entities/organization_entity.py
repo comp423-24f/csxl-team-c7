@@ -6,6 +6,9 @@ from .entity_base import EntityBase
 from typing import Self
 from ..models.organization import Organization
 from ..models.organization_details import OrganizationDetails
+from backend.entities.organization_application_entity import (
+    OrganizationApplicationEntity,
+)
 from .user_organization_table import user_organization_table
 
 __authors__ = ["Ajay Gandecha", "Jade Keegan", "Brianna Ta", "Audrey Toney"]
@@ -57,6 +60,9 @@ class OrganizationEntity(EntityBase):
     public: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     needs_application: Mapped[bool] = mapped_column(Boolean, default=False)
     open_status: Mapped[bool] = mapped_column(Boolean, default=True)
+    applications: Mapped[list["OrganizationApplicationEntity"]] = relationship(
+        back_populates="organization", cascade="all,delete"
+    )
 
     # NOTE: This field establishes a one-to-many relationship between the organizations and events table.
     events: Mapped[list["EventEntity"]] = relationship(
@@ -149,4 +155,5 @@ class OrganizationEntity(EntityBase):
             open_status=self.open_status,
             users=[user.to_model() for user in self.users],
             events=[event.to_overview_model() for event in self.events],
+            applications=[app.to_model() for app in self.applications],
         )

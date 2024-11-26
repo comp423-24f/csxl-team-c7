@@ -12,6 +12,7 @@ from .organization import Organization
 from .event import EventOverview, EventDraft
 from .public_user import PublicUser
 from .room import Room
+from .organization_application import OrganizationApplication
 from .room_details import RoomDetails
 from .event_registration import (
     EventRegistration,

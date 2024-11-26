@@ -1,4 +1,3 @@
-<!-- HTML Structure of Admin Organizations List -->
 <mat-pane>
   <mat-card-content>
     <div class="content">
@@ -19,12 +18,12 @@
                 <p>{{ element.name }}</p>
                 <div class="button-container">
                   @if(adminPermissions() | async) {
-                  <button
-                    mat-stroked-button
-                    (click)="deleteOrganization(element)"
-                    class="control-buttons">
-                    Delete
-                  </button>
+                    <button
+                      mat-stroked-button
+                      (click)="deleteOrganization(element)"
+                      class="control-buttons">
+                      Delete
+                    </button>
                   }
                   <button
                     mat-stroked-button
@@ -32,6 +31,14 @@
                     (click)="editOrganization(element)">
                     Edit
                   </button>
+                  @if(element.needs_application) {
+                    <button
+                      mat-stroked-button
+                      class="control-buttons"
+                      (click)="viewApplications(element)">
+                      Applications
+                    </button>
+                  }
                 </div>
               </div>
             </td>
@@ -42,4 +49,4 @@
       </div>
     </div>
   </mat-card-content>
-</mat-pane>
+ </mat-pane>

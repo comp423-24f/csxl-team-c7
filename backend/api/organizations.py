@@ -4,6 +4,16 @@ Organization routes are used to create, retrieve, and update Organizations."""
 
 from fastapi import APIRouter, Depends
 
+from backend.models.organization_application import (
+    ApplicationStatus,
+    OrganizationApplication,
+)
+from backend.models.user_details import UserDetails
+from backend.services.organization_application import (
+    OrganizationApplication,
+    OrganizationApplicationService,
+)
+
 from ..services import OrganizationService, RoleService
 from ..models.organization import Organization
 from ..models.organization_details import OrganizationDetails
@@ -171,3 +181,67 @@ def check_membership(
 ) -> bool:
     """Check if user is member of organization"""
     return organization_service.is_member(subject.id, slug)
+
+
+@api.post("/{slug}/apply", response_model=OrganizationDetails, tags=["Organizations"])
+def create_application(
+    slug: str,
+    application: OrganizationApplication,
+    subject: User = Depends(registered_user),
+    application_service: OrganizationApplicationService = Depends(),
+) -> OrganizationDetails:
+    """Submit new application"""
+    return application_service.create(subject, slug, application)
+
+
+@api.get(
+    "/{slug}/applications", response_model=OrganizationDetails, tags=["Organizations"]
+)
+def get_organization_applications(
+    slug: str,
+    subject: User = Depends(registered_user),
+    application_service: OrganizationApplicationService = Depends(),
+) -> OrganizationDetails:
+    """Get all applications for an organization (admin only)"""
+    return application_service.get_organization_applications(subject, slug)
+
+
+@api.get("/applications/user", response_model=UserDetails, tags=["Organizations"])
+def get_user_applications(
+    subject: User = Depends(registered_user),
+    application_service: OrganizationApplicationService = Depends(),
+) -> UserDetails:
+    """Get current user's applications"""
+    return application_service.get_user_applications(subject.id)
+
+
+@api.put(
+    "/applications/{application_id}",
+    response_model=OrganizationDetails,
+    tags=["Organizations"],
+)
+def update_application_status(
+    application_id: int,
+    status: ApplicationStatus,
+    admin_response: str | None = None,
+    subject: User = Depends(registered_user),
+    application_service: OrganizationApplicationService = Depends(),
+) -> OrganizationDetails:
+    """Update application status (admin only)"""
+    return application_service.update_status(
+        subject, application_id, status, admin_response
+    )
+
+
+@api.delete(
+    "/applications/{application_id}",
+    response_model=OrganizationDetails,
+    tags=["Organizations"],
+)
+def delete_application(
+    application_id: int,
+    subject: User = Depends(registered_user),
+    application_service: OrganizationApplicationService = Depends(),
+) -> OrganizationDetails:
+    """Delete application"""
+    return application_service.delete(subject, application_id)

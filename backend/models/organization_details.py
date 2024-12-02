@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+from backend.models.organization_application import OrganizationApplication
 from backend.models.user import User
 from .organization import Organization
 from .event import EventOverview
@@ -20,3 +21,4 @@ class OrganizationDetails(Organization):
 
     events: list[EventOverview]
     users: list[User] = []
+    applications: list[OrganizationApplication] = []

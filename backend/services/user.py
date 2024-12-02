@@ -212,3 +212,10 @@ class UserService:
         if not user:
             raise ResourceNotFoundException(f"User {user_id} not found")
         return [org.to_model() for org in user.organizations]
+
+    def get_user_details(self, user_id: int) -> UserDetails:
+        """Get full user details including applications"""
+        user_entity = self._session.get(UserEntity, user_id)
+        if user_entity is None:
+            raise ResourceNotFoundException(f"User {user_id} not found")
+        return user_entity.to_details_model()

@@ -8,11 +8,13 @@ from backend.models.organization_application import (
     ApplicationStatus,
     OrganizationApplication,
 )
+from backend.models.organization_message import OrganizationMessage
 from backend.models.user_details import UserDetails
 from backend.services.organization_application import (
     OrganizationApplication,
     OrganizationApplicationService,
 )
+from backend.services.organization_messages import OrganizationMessageService
 
 from ..services import OrganizationService, RoleService
 from ..models.organization import Organization
@@ -245,3 +247,39 @@ def delete_application(
 ) -> OrganizationDetails:
     """Delete application"""
     return application_service.delete(subject, application_id)
+
+
+@api.post(
+    "/{slug}/messages", response_model=OrganizationMessage, tags=["Organizations"]
+)
+def create_message(
+    slug: str,
+    content: str,
+    subject: User = Depends(registered_user),
+    message_service: OrganizationMessageService = Depends(),
+) -> OrganizationMessage:
+    """Create new organization message (admin only)"""
+    return message_service.create_message(subject, slug, content)
+
+
+@api.put(
+    "/messages/{message_id}", response_model=OrganizationMessage, tags=["Organizations"]
+)
+def update_message(
+    message_id: int,
+    content: str,
+    subject: User = Depends(registered_user),
+    message_service: OrganizationMessageService = Depends(),
+) -> OrganizationMessage:
+    """Update organization message (admin only)"""
+    return message_service.update_message(subject, message_id, content)
+
+
+@api.delete("/messages/{message_id}", response_model=None, tags=["Organizations"])
+def delete_message(
+    message_id: int,
+    subject: User = Depends(registered_user),
+    message_service: OrganizationMessageService = Depends(),
+):
+    """Delete organization message (admin only)"""
+    message_service.delete_message(subject, message_id)

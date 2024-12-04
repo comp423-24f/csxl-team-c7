@@ -47,6 +47,8 @@ import { OrganizationMembersCard } from './widgets/organization-members-card/org
 import { MatChipListbox, MatChipsModule } from '@angular/material/chips';
 import { OrganizationApplicationReviewComponent } from './organization-application-review/organization-application-review.component';
 import { ApplicationViewDialogComponent } from './organization-application-review/application-view-widget/application-view-dialog.widget';
+import { OrganizationMessagesWidget } from './widgets/organization-messages/organization-messages.widget';
+
 @NgModule({
   declarations: [
     OrganizationPageComponent,
@@ -64,7 +66,8 @@ import { ApplicationViewDialogComponent } from './organization-application-revie
     OrganizationCard,
     OrganizationDetailsInfoCard,
     OrganizationNotFoundCard,
-    OrganizationMembersCard
+    OrganizationMembersCard,
+    OrganizationMessagesWidget
   ],
   imports: [
     CommonModule,

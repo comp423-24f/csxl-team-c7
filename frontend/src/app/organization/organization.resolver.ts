@@ -40,7 +40,8 @@ export const organizationResolver: ResolveFn<Organization | undefined> = (
       public: false,
       events: null,
       users: null,
-      applications: null
+      applications: null,
+      messages: null
     };
   }
 

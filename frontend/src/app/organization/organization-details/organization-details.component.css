@@ -10,3 +10,19 @@
   padding-left: 16px;
   padding-right: 16px;
 }
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  padding: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Responsive layout */
+@media (max-width: 1024px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+  }
+}

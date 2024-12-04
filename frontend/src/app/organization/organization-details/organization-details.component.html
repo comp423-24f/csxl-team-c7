@@ -1,11 +1,16 @@
-<!-- HTML Structure of Organization Details Page -->
-
 @if (organization === undefined) {
-<organization-not-found-card />
+  <organization-not-found-card />
 } @else {
-<organization-details-info-card
-  [organization]="organization"
-  [profile]="profile"
-  [eventCreationPermissions]="eventCreationPermission$ | async"
-/>
+  <div class="page-layout">
+    <div class="main-content">
+      <organization-details-info-card
+        [organization]="organization"
+        [profile]="profile"
+        [eventCreationPermissions]="eventCreationPermission$ | async"
+      />
+    </div>
+    <div class="side-content">
+      <organization-messages [organization]="organization" />
+    </div>
+  </div>
 }

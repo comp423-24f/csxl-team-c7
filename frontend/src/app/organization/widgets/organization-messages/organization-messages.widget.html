@@ -1,0 +1,71 @@
+@if(isMember){
+<mat-pane>
+    <mat-card-header>
+      <mat-card-title>Organization Messages</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="messages-container">
+        @if (organization.messages?.length === 0) {
+          <p>No announcements yet.</p>
+        } @else {
+          @for (message of organization.messages; track message.id) {
+            <div class="message">
+              <div class="message-header">
+                <span class="message-date">{{
+                  message.created_at | date
+                }}</span>
+                @if (isAdmin) {
+                  <div class="message-actions">
+                    <button mat-icon-button (click)="editMessage(message)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="deleteMessage(message)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                }
+              </div>
+              <p [class.editing]="editingMessage?.id === message.id">
+                @if (editingMessage && editingMessage.id === message.id) {
+                  <mat-form-field class="edit-field">
+                    <textarea
+                      matInput
+                      [ngModel]="editingMessage.content"
+                      (ngModelChange)="editingMessage!.content = $event">
+                    </textarea>
+                  </mat-form-field>
+                  <div class="edit-actions">
+                    <button mat-button (click)="saveEdit()">Save</button>
+                    <button mat-button (click)="cancelEdit()">Cancel</button>
+                  </div>
+                } @else {
+                  {{ message.content }}
+                }
+              </p>
+            </div>
+          }
+        }
+      </div>
+
+      @if (isAdmin) {
+        <div class="new-message">
+          <mat-form-field appearance="fill">
+            <mat-label>New Announcement</mat-label>
+            <textarea matInput [(ngModel)]="newMessage" rows="3"></textarea>
+          </mat-form-field>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="sendMessage()"
+            [disabled]="!newMessage.trim()">
+            Post Announcement
+          </button>
+        </div>
+      }
+    </mat-card-content>
+  </mat-pane>
+}

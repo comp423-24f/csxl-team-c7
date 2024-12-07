@@ -28,4 +28,5 @@ export interface Organization {
   events: Event[] | null;
   users: any;
   applications: any;
+  messages: any;
 }

@@ -18,8 +18,8 @@ __license__ = "MIT"
 
 root_role = Role(id=1, name="root")
 ambassador_role = Role(id=2, name="ambassadors")
-
-roles = [root_role, ambassador_role]
+organization_admin_role = Role(id=5, name="organizationAdmin")
+roles = [root_role, ambassador_role, organization_admin_role]
 
 
 def insert_fake_data(session: Session):

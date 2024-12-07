@@ -75,7 +75,9 @@ class UserEntity(EntityBase):
     # The permissions for the given user.
     # NOTE: This field establishes a one-to-many relationship between the permission and users table.
     permissions: Mapped["PermissionEntity"] = relationship(back_populates="user")
-
+    messages: Mapped[list["OrganizationMessageEntity"]] = relationship(
+        back_populates="user", cascade="all,delete"
+    )
     # Section relations that the user is a part of.
     sections: Mapped[list["SectionMemberEntity"]] = relationship(
         back_populates="user"

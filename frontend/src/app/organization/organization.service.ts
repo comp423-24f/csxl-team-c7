@@ -19,6 +19,7 @@ import {
 } from './organization-application.model';
 import { Organization } from './organization.model';
 import { PermissionService } from '../permission.service';
+import { OrganizationMessage } from './widgets/organization-messages/organization-message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -158,6 +159,30 @@ export class OrganizationService {
       }
     );
   }
+  createMessage(
+    slug: string,
+    content: string
+  ): Observable<OrganizationMessage> {
+    return this.http.post<OrganizationMessage>(
+      `/api/organizations/${slug}/messages?content=${content}`,
+      {}
+    );
+  }
+
+  updateMessage(
+    messageId: number,
+    content: string
+  ): Observable<OrganizationMessage> {
+    return this.http.put<OrganizationMessage>(
+      `/api/organizations/messages/${messageId}?content=${content}`,
+      {}
+    );
+  }
+
+  deleteMessage(messageId: number): Observable<void> {
+    return this.http.delete<void>(`/api/organizations/messages/${messageId}`);
+  }
+
   updateApplicationStatus(
     applicationId: number,
     status: ApplicationStatus,

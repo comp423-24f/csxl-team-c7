@@ -86,12 +86,23 @@ student = User(
     pronouns="They / Them / Theirs",
 )
 
+organizationAdmin = User(
+    id=7,
+    pid=444444444,
+    onyen="stepper",
+    email="stepper@unc.edu",
+    first_name="Sam",
+    last_name="Tepper",
+    pronouns="Him",
+)
 
-users = [root, ambassador, user, instructor, uta, student]
+
+users = [root, ambassador, user, instructor, uta, student, organizationAdmin]
 
 roles_users = {
     role_data.root_role.id: [root],
     role_data.ambassador_role.id: [ambassador],
+    role_data.organization_admin_role.id: [organizationAdmin],
 }
 
 

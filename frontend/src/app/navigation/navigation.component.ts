@@ -30,6 +30,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   public adminPermission$: Observable<boolean>;
   public ambassadorPermission$: Observable<boolean>;
   public hiringPermission$: Observable<boolean>;
+  public organizationAdminPermission$: Observable<boolean>;
 
   constructor(
     public auth: AuthenticationService,
@@ -52,6 +53,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
     this.ambassadorPermission$ = this.permission.check(
       'coworking.reservation.*',
       '*'
+    );
+    this.organizationAdminPermission$ = this.permission.check(
+      'organization.create',
+      'organization/'
     );
     this.hiringPermission$ = this.permission.check('hiring.*', '*');
     // Reset the admin settings navigation every time the route changes

@@ -36,6 +36,14 @@ class OrganizationApplicationEntity(EntityBase):
 
     @classmethod
     def from_model(cls, model: OrganizationApplication) -> Self:
+        """
+        Class method that converts an `OrganizationApplication` model into a `OrganizationApplicationEntity`
+
+        Parameters:
+            - model (OrganizationApplication): Model to convert into an entity
+        Returns:
+            OrganizationApplicationEntity: Entity created from model
+        """
         return cls(
             id=model.id,
             user_id=model.user_id,
@@ -50,6 +58,12 @@ class OrganizationApplicationEntity(EntityBase):
         )
 
     def to_model(self) -> OrganizationApplication:
+        """
+        Converts a `OrganizationApplicatoinEntity` object into a `OrganizationApplication` model object
+
+        Returns:
+            OrganizationApplication: `OrganizationApplication` object from the entity
+        """
         return OrganizationApplication(
             id=self.id,
             user_id=self.user_id,

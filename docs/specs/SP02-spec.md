@@ -4,7 +4,7 @@
 
 This document contains the technical specifications for the new Organization features for the CSXL web application. This feature so far adds _5_ new database tables, _15_ new API routes, and _4_ new frontend component to the application.
 
-SP02 focused on adding functionality for the application page on both the memebr and admin side, which was only a mockup frontend in SP01. Users are now able to apply to organizations, and admins can accept or deny these applications, changes of which are reflected on the organization page.
+SP02 focused on adding functionality for the application page on both the member and admin side, which was only a mockup frontend in SP01. Users are now able to apply to organizations, and admins can accept or deny these applications, changes of which are reflected on the organization page.
 
 SP02 also includes a user members list with Academic term listing. This is dynamically reflected with user joining, leaving, and application acceptance/denial.
 
@@ -47,13 +47,13 @@ In addition to the SP01 relationships, the Messages and Applications are a part 
 
 **UX Decision-** We decided to disallow admins to be members of an organization, until an admin accepts the application. This is partially because the CSXL website doesn't have a global academic term, and the only way to add this was to retrieve it from the application. This means that only organizations with applications will have the academic term listed. This can be edited for future use, but the level of importance for application-based organization is what led us to this decision.
 
-**Technical Decision-** One technical decision we made was having a universal application for all clubs, in the sense that all organizations would have the same application structure. This was because creating a form-control document that organization-admins themselves could edit and deploy would have taken a lot of time. The middle ground we came with is a comprimise between this high level concept, and a google form link.
+**Technical Decision-** One technical decision we made was having a universal application for all clubs, in the sense that all organizations would have the same application structure. This was because creating a form-control document that organization-admins themselves could edit and deploy would have taken a lot of time. The middle ground we came with is a compromise between this high level concept, and a google form link.
 
 ## Development Decisions<a name='Development Decisions'></a>
 
 **FrontEnd**
 
-Multiple widgets were added, as well as another routing component. This inlcudes organization-application.model.ts, organization-application-reivew component files, organizatoin-apply component files, and the organization-messages and organization-members-card widgets. All of these work together to fill out the user story.
+Multiple widgets were added, as well as another routing component. This inlcudes organization-application.model.ts, organization-application-review component files, organization-apply component files, and the organization-messages and organization-members-card widgets. All of these work together to fill out the user story.
 
 **Backend**
 

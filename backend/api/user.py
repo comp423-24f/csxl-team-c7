@@ -47,3 +47,10 @@ def get_user_applications(
 ):
     """Get all applications submitted by the current user"""
     return user_svc.get_user_details(subject.id)
+
+
+# @api.get("/{id}/roles", tags=["Users"])
+# def get_user_role(
+#    subject: User = Depends(registered_user), user_svc: UserService = Depends()
+# ):
+#    return user_svc.get_user_role(subject.id)

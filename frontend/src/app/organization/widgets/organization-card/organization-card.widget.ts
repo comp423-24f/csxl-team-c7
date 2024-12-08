@@ -11,6 +11,8 @@ import { Component, Input } from '@angular/core';
 import { Organization } from '../../organization.model';
 import { Profile } from '../../../profile/profile.service';
 import { OrganizationService } from '../../organization.service';
+/*import { ProfileService } from '../../../profile/profile.service'; // Import the service to get user data
+ */
 
 @Component({
   selector: 'organization-card',
@@ -24,8 +26,12 @@ export class OrganizationCard {
   @Input() profile?: Profile;
 
   isMember: boolean = false;
+  //userRole: string = ''; // To store the user's role
 
-  constructor(private organizationService: OrganizationService) {}
+  constructor(
+    private organizationService: OrganizationService
+    //,private profileService: profileService
+  ) {}
 
   ngOnInit() {
     if (this.organization.slug) {
@@ -33,7 +39,15 @@ export class OrganizationCard {
         .isMember(this.organization.slug)
         .subscribe((result) => (this.isMember = result));
     }
+    //this.getUserRole();
   }
+  /*getUserRole() {
+    if (this.profile?.id) {
+      this.profileService.getUserRole(this.profile.id).subscribe((result) => {
+        this.userRole = result;
+      });
+    }
+  }*/
 
   join() {
     this.organizationService

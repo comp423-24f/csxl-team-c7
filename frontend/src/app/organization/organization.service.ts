@@ -13,8 +13,13 @@ import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, tap } from 'rxjs';
+import {
+  ApplicationStatus,
+  OrganizationApplication
+} from './organization-application.model';
 import { Organization } from './organization.model';
 import { PermissionService } from '../permission.service';
+import { OrganizationMessage } from './widgets/organization-messages/organization-message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -96,6 +101,17 @@ export class OrganizationService {
         )
       );
   }
+  joinOrganization(slug: string): Observable<Organization> {
+    return this.http.post<Organization>(`/api/organizations/${slug}/join`, {});
+  }
+
+  leaveOrganization(slug: string): Observable<Organization> {
+    return this.http.post<Organization>(`/api/organizations/${slug}/leave`, {});
+  }
+
+  isMember(slug: string): Observable<boolean> {
+    return this.http.get<boolean>(`/api/organizations/${slug}/membership`);
+  }
 
   /** Returns the deleted organization object from the backend database table using the backend HTTP delete request
    *  and updates the organizations signal to exclude the deleted organization.
@@ -112,5 +128,75 @@ export class OrganizationService {
           );
         })
       );
+  }
+  getOrganizationApplications(slug: string): Observable<Organization> {
+    return this.http.get<Organization>(
+      `/api/organizations/${slug}/applications`
+    );
+  }
+  submitApplication(
+    slug: string,
+    application: {
+      interest_statement: string;
+      experience: string;
+      expected_graduation: string;
+      program_pursued: string;
+      additional_info: any;
+    }
+  ): Observable<OrganizationApplication> {
+    return this.http.post<OrganizationApplication>(
+      `/api/organizations/${slug}/apply`,
+      {
+        interest_statement: application.interest_statement,
+        experience: application.experience,
+        expected_graduation: application.expected_graduation,
+        program_pursued: application.program_pursued,
+        additional_info: application.additional_info,
+
+        user_id: 0,
+        organization_id: 0,
+        status: 'PENDING'
+      }
+    );
+  }
+  createMessage(
+    slug: string,
+    content: string
+  ): Observable<OrganizationMessage> {
+    return this.http.post<OrganizationMessage>(
+      `/api/organizations/${slug}/messages?content=${content}`,
+      {}
+    );
+  }
+
+  updateMessage(
+    messageId: number,
+    content: string
+  ): Observable<OrganizationMessage> {
+    return this.http.put<OrganizationMessage>(
+      `/api/organizations/messages/${messageId}?content=${content}`,
+      {}
+    );
+  }
+
+  deleteMessage(messageId: number): Observable<void> {
+    return this.http.delete<void>(`/api/organizations/messages/${messageId}`);
+  }
+
+  updateApplicationStatus(
+    applicationId: number,
+    status: ApplicationStatus,
+    adminResponse?: string
+  ): Observable<Organization> {
+    const params = {
+      status: status,
+      admin_response: adminResponse || ''
+    };
+
+    return this.http.put<Organization>(
+      `/api/organizations/applications/${applicationId}`,
+      {},
+      { params: params }
+    );
   }
 }

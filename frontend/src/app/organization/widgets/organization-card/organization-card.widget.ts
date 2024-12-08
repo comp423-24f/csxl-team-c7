@@ -10,6 +10,7 @@
 import { Component, Input } from '@angular/core';
 import { Organization } from '../../organization.model';
 import { Profile } from '../../../profile/profile.service';
+import { OrganizationService } from '../../organization.service';
 
 @Component({
   selector: 'organization-card',
@@ -22,5 +23,31 @@ export class OrganizationCard {
   /** The profile of the currently signed in user */
   @Input() profile?: Profile;
 
-  constructor() {}
+  isMember: boolean = false;
+
+  constructor(private organizationService: OrganizationService) {}
+
+  ngOnInit() {
+    if (this.organization.slug) {
+      this.organizationService
+        .isMember(this.organization.slug)
+        .subscribe((result) => (this.isMember = result));
+    }
+  }
+
+  join() {
+    this.organizationService
+      .joinOrganization(this.organization.slug)
+      .subscribe(() => (this.isMember = true));
+  }
+
+  leave() {
+    if (this.organization.slug) {
+      this.organizationService
+        .leaveOrganization(this.organization.slug)
+        .subscribe(() => {
+          this.isMember = false;
+        });
+    }
+  }
 }

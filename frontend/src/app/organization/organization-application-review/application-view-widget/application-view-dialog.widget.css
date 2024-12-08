@@ -1,0 +1,12 @@
+.application-section {
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  color: var(--mat-primary);
+  margin-bottom: 0.5rem;
+}
+
+p {
+  white-space: pre-wrap;
+}

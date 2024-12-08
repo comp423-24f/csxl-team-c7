@@ -6,6 +6,12 @@ from fastapi import Depends
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from backend.entities.organization_application_entity import (
+    OrganizationApplicationEntity,
+)
+from backend.entities.user_entity import UserEntity
+from backend.models.organization_application import ApplicationStatus
+
 from ..database import db_session
 from ..models.organization import Organization
 from ..models.organization_details import OrganizationDetails
@@ -185,6 +191,54 @@ class OrganizationService:
         # Return updated object
         return obj.to_model()
 
+    def add_member(self, subject: User, organization_slug: str) -> OrganizationDetails:
+        organization = (
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .one_or_none()
+        )
+        if not organization:
+            raise ResourceNotFoundException(
+                f"Organization {organization_slug} not found"
+            )
+
+        user = self._session.query(UserEntity).filter(UserEntity.id == subject.id).one()
+        organization.users.append(user)
+        self._session.commit()
+        return organization.to_details_model()
+
+    def remove_member(self, subject: User, organization_slug: str) -> None:
+        organization = (
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .one_or_none()
+        )
+        if not organization:
+            raise ResourceNotFoundException(
+                f"Organization {organization_slug} not found"
+            )
+
+        user = self._session.query(UserEntity).filter(UserEntity.id == subject.id).one()
+        organization.users.remove(user)
+        self._session.commit()
+
+    def is_member(self, user_id: int, organization_slug: str) -> bool:
+        organization = (
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .one_or_none()
+        )
+        if not organization:
+            raise ResourceNotFoundException(
+                f"Organization {organization_slug} not found"
+            )
+        return bool(
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .filter(OrganizationEntity.users.any(id=user_id))
+            .one_or_none()
+        )
+
     def delete(self, subject: User, slug: str) -> None:
         """
         Delete the organization based on the provided slug.
@@ -217,3 +271,48 @@ class OrganizationService:
         self._session.delete(obj)
         # Save changes
         self._session.commit()
+
+    def approve_application_and_add_member(
+        self, subject: User, organization_slug: str, application_id: int
+    ) -> OrganizationDetails:
+        """
+        Approves an application and automatically adds the applicant as a member.
+
+        Parameters:
+            subject: admin approving the application
+            organization_slug: organization being applied to
+            application_id: ID of application being approved
+        """
+        # First check admin permissions
+        self._permission.enforce(
+            subject, "organization.*", f"organization/{organization_slug}"
+        )
+
+        organization = (
+            self._session.query(OrganizationEntity)
+            .filter(OrganizationEntity.slug == organization_slug)
+            .one_or_none()
+        )
+        if not organization:
+            raise ResourceNotFoundException(
+                f"Organization {organization_slug} not found"
+            )
+
+        # Get the application
+        application = self._session.get(OrganizationApplicationEntity, application_id)
+        if not application:
+            raise ResourceNotFoundException("Application not found")
+
+        # Get the applicant
+        user = self._session.get(UserEntity, application.user_id)
+        if not user:
+            raise ResourceNotFoundException("Applicant not found")
+
+        # Add as member
+        organization.users.append(user)
+
+        # Update application status
+        application.status = ApplicationStatus.APPROVED
+
+        self._session.commit()
+        return organization.to_details_model()

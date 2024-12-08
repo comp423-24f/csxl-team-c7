@@ -14,13 +14,19 @@ import { OrganizationDetailsComponent } from './organization-details/organizatio
 import { OrganizationEditorComponent } from './organization-editor/organization-editor.component';
 import { OrganizationAdminComponent } from './organization-admin/organization-admin.component';
 import { OrganizationApplyComponent } from './organization-apply/organization-apply.component';
+import { OrganizationApplicationReviewComponent } from './organization-application-review/organization-application-review.component';
 
 const routes: Routes = [
   OrganizationAdminComponent.Route,
   OrganizationPageComponent.Route,
   OrganizationDetailsComponent.Route,
   OrganizationEditorComponent.Route,
-  OrganizationApplyComponent.Route
+  OrganizationApplyComponent.Route,
+  {
+    path: ':slug/applications',
+    component: OrganizationApplicationReviewComponent,
+    title: 'Review Applications'
+  }
 ];
 
 @NgModule({

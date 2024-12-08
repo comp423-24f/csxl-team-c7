@@ -30,6 +30,7 @@ appteam = OrganizationEntity(
     public=False,
     needs_application=True,
     open_status=True,
+    users=[],
 )
 
 acm = OrganizationEntity(
@@ -49,6 +50,7 @@ acm = OrganizationEntity(
     public=False,
     needs_application=True,
     open_status=True,
+    users=[],
 )
 
 bit = OrganizationEntity(
@@ -68,6 +70,7 @@ bit = OrganizationEntity(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 
 cads = Organization(
@@ -87,6 +90,7 @@ cads = Organization(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 carvr = OrganizationEntity(
     id=5,
@@ -105,6 +109,7 @@ carvr = OrganizationEntity(
     public=False,
     needs_application=True,
     open_status=True,
+    users=[],
 )
 
 cssg = Organization(
@@ -124,6 +129,7 @@ cssg = Organization(
     public=False,
     needs_application=True,
     open_status=True,
+    users=[],
 )
 
 ctf = OrganizationEntity(
@@ -143,6 +149,7 @@ ctf = OrganizationEntity(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 
 enablingtech = OrganizationEntity(
@@ -162,6 +169,7 @@ enablingtech = OrganizationEntity(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 
 esports = OrganizationEntity(
@@ -181,6 +189,7 @@ esports = OrganizationEntity(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 
 gamedev = OrganizationEntity(
@@ -200,6 +209,7 @@ gamedev = OrganizationEntity(
     public=False,
     needs_application=True,
     open_status=True,
+    users=[],
 )
 
 gwc = OrganizationEntity(
@@ -219,6 +229,7 @@ gwc = OrganizationEntity(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 
 hacknc = OrganizationEntity(
@@ -238,6 +249,7 @@ hacknc = OrganizationEntity(
     public=False,
     needs_application=False,
     open_status=False,
+    users=[],
 )
 
 ktp = OrganizationEntity(
@@ -257,6 +269,7 @@ ktp = OrganizationEntity(
     public=False,
     needs_application=False,
     open_status=False,
+    users=[],
 )
 
 pearlhacks = OrganizationEntity(
@@ -276,6 +289,7 @@ pearlhacks = OrganizationEntity(
     public=False,
     needs_application=True,
     open_status=True,
+    users=[],
 )
 
 pm = OrganizationEntity(
@@ -295,6 +309,7 @@ pm = OrganizationEntity(
     public=False,
     needs_application=True,
     open_status=True,
+    users=[],
 )
 
 queerhack = OrganizationEntity(
@@ -314,6 +329,7 @@ queerhack = OrganizationEntity(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 
 wics = OrganizationEntity(
@@ -333,6 +349,7 @@ wics = OrganizationEntity(
     public=True,
     needs_application=False,
     open_status=True,
+    users=[],
 )
 
 organizations = [

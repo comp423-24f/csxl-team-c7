@@ -1,22 +1,56 @@
 <mat-pane>
-    <mat-card-header>
-      <mat-card-title>Apply to Organization</mat-card-title>
-    </mat-card-header>
-  
-    <mat-card-content>
-      <p>
-        Please fill out the application form to apply for this organization.
-      </p>
-      <!-- Placeholder for fields -->
-      <div class="form-fields">
-        <p>Form fields will be displayed here.</p>
-      </div>
-    </mat-card-content>
-  
-    <mat-card-actions>
-      <button class="submit-button" mat-flat-button color="primary" disabled>
-        Submit Application
-      </button>
-    </mat-card-actions>
-  </mat-pane>
-  
+  <mat-card-header>
+    <mat-card-title>Apply to {{ organizationName }}</mat-card-title>  </mat-card-header>
+
+  <mat-card-content>
+      <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+        @for(field of fields; track field.name) {
+            <div class="form-field">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{ field.title }}</mat-label>
+                    @if (field.description) {
+                        <mat-hint>{{ field.description }}</mat-hint>
+                    }
+                    
+                    @if (field.fieldType === FormFieldType.LONG_TEXT) {
+                        <textarea
+                            matInput
+                            [formControlName]="field.name"
+                            rows="4"
+                            [placeholder]="field.description">
+                        </textarea>
+                    } @else if (field.fieldType === FormFieldType.DROP_DOWN) {
+                        <mat-select [formControlName]="field.name">
+                            @for(option of field.dropdownItems; track option) {
+                                <mat-option [value]="option">{{ option }}</mat-option>
+                            }
+                        </mat-select>
+                    } @else {
+                        <input
+                            matInput
+                            [formControlName]="field.name"
+                            [placeholder]="field.description">
+                    }
+        
+                    @if (applicationForm.get(field.name)?.hasError('required')) {
+                        <mat-error>This field is required</mat-error>
+                    }
+                    @if (applicationForm.get(field.name)?.hasError('minlength')) {
+                        <mat-error>Please write at least 50 characters</mat-error>
+                    }
+                </mat-form-field>
+            </div>
+        }
+
+          <mat-card-actions>
+              <button
+                  mat-flat-button
+                  color="primary"
+                  type="submit"
+                  [disabled]="applicationForm.invalid || submitting">
+                  Submit Application
+              </button>
+          </mat-card-actions>
+      </form>
+  </mat-card-content>
+</mat-pane>

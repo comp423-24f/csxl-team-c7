@@ -58,7 +58,7 @@ OH_HOURS = {
         "SN146": [(time(hour=15), time(hour=17))],
         "SN147": [
             (time(hour=9), time(hour=13)),
-            (time(hour=15, minute=30), time(hour=16, minute=30))
+            (time(hour=15, minute=30), time(hour=16, minute=30)),
         ],
     },
     FRIDAY: {

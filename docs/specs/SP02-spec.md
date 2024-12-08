@@ -4,7 +4,7 @@
 
 This document contains the technical specifications for the new Organization features for the CSXL web application. This feature so far adds _5_ new database tables, _15_ new API routes, and _4_ new frontend component to the application.
 
-SP02 focused on adding functionality for the application page on both the memebr and admin side, which was only a mockup frontend in SP01. Users are now able to apply to organizations, and admins can accept or deny these applications, changes of which are reflected on the organization page.
+SP02 focused on adding functionality for the application page on both the member and admin side, which was only a mockup frontend in SP01. Users are now able to apply to organizations, and admins can accept or deny these applications, changes of which are reflected on the organization page.
 
 SP02 also includes a user members list with Academic term listing. This is dynamically reflected with user joining, leaving, and application acceptance/denial.
 

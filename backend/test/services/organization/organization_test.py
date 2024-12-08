@@ -4,6 +4,9 @@
 import pytest
 from unittest.mock import create_autospec
 
+from backend.entities.organization_application_entity import (
+    OrganizationApplicationEntity,
+)
 from backend.services.exceptions import (
     UserPermissionException,
     ResourceNotFoundException,
@@ -18,6 +21,7 @@ from ..fixtures import organization_svc_integration
 
 # Explicitly import Data Fixture to load entities in database
 from ..core_data import setup_insert_data_fixture
+from ..organization_application_data import application1
 
 # Data Models for Fake Data Inserted in Setup
 from .organization_test_data import (
@@ -182,9 +186,6 @@ def test_add_member_organization_does_not_exist(
         organization_svc_integration.add_member(root, to_add.slug)
 
 
-# Test `OrganizationService.remove_member()`
-
-
 def test_remove_member_from_organization(
     organization_svc_integration: OrganizationService,
 ):
@@ -221,3 +222,13 @@ def test_is_member_organization_does_not_exist(
     """Test that `is_member` raises an error if the organization does not exist."""
     with pytest.raises(ResourceNotFoundException):
         organization_svc_integration.is_member(root.id, "fake slug")
+
+
+def test_appove_application_and_add_member(
+    organization_svc_integration: OrganizationService,
+):
+    """Test that approve_application_and_add_member works"""
+    organization_svc_integration.approve_application_and_add_member(
+        root, to_add.slug, application1.id
+    )
+    # test that the application got apporved and member got added to organization

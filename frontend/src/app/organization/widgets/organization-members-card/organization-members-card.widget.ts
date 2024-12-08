@@ -8,4 +8,10 @@ import { Organization } from '../../organization.model';
 })
 export class OrganizationMembersCard {
   @Input() organization!: Organization;
+  getExpectedGraduation(userId: number): string | null {
+    const application = this.organization.applications?.find(
+      (app: any) => app.user_id === userId
+    );
+    return application ? application.expected_graduation : null;
+  }
 }

@@ -4,6 +4,9 @@
 import pytest
 from unittest.mock import create_autospec
 
+from backend.entities.organization_application_entity import (
+    OrganizationApplicationEntity,
+)
 from backend.services.exceptions import (
     UserPermissionException,
     ResourceNotFoundException,
@@ -180,9 +183,6 @@ def test_add_member_organization_does_not_exist(
     """Test that adding a member to a non-existent organization raises an error."""
     with pytest.raises(ResourceNotFoundException):
         organization_svc_integration.add_member(root, to_add.slug)
-
-
-# Test `OrganizationService.remove_member()`
 
 
 def test_remove_member_from_organization(

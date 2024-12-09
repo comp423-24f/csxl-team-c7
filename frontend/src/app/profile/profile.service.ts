@@ -108,4 +108,7 @@ export class ProfileService {
   getByOnyen(onyen: string): Observable<PublicProfile> {
     return this.http.get<PublicProfile>(`/api/user/${onyen}`);
   }
+  /*getUserRole(id: number): Observable<string> {
+    return this.http.get<string>(`/api/user/${id}/roles`);
+  }*/
 }

@@ -181,7 +181,7 @@ class UserEntity(EntityBase):
             bio=self.bio,
             linkedin=self.linkedin,
             website=self.website,
-            permissions=self.permissions,
+            permissions=self.permissions if self.permissions else [],
             applications=self.applications,
             sections=self.sections,
             organizations=[org.to_model() for org in self.organizations],

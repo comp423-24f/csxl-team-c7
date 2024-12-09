@@ -3,6 +3,7 @@
 import pytest
 from unittest.mock import create_autospec
 from sqlalchemy.orm import Session
+
 from ...services import (
     PermissionService,
     UserService,
@@ -11,6 +12,7 @@ from ...services import (
     EventService,
     RoomService,
     ApplicationService,
+    OrganizationApplicationService,
 )
 from ...services.academics import HiringService
 from ...services.article import ArticleService
@@ -53,6 +55,12 @@ def role_svc(session: Session, permission_svc_mock: PermissionService):
 def organization_svc_integration(session: Session):
     """This fixture is used to test the OrganizationService class with a real PermissionService."""
     return OrganizationService(session, PermissionService(session))
+
+
+@pytest.fixture()
+def organization_application_svc_integration(session: Session):
+    """This fixture is used to test the OrganizationService class with a real PermissionService."""
+    return OrganizationApplicationService(session, PermissionService(session))
 
 
 @pytest.fixture()

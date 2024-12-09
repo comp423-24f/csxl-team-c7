@@ -10,53 +10,6 @@ SP02 also includes a user members list with Academic term listing. This is dynam
 
 SP02 also adds an announcements tab, with admin ability to post announcements, and Users viewing announcements if they are a member.
 
-## Demo Walk-through<a name='Demo'></a>
-
-### Organization Members Listed & Messages<a name='Org Members and Messages'></a>
-
-Once you are at the CSXL website and in the Organizations tab using the side menu, you can select any organization to collect their details. The changes that we made now allows a member of that organization to view all members of that organization in a list, including their name and academic term. We have also added an Organization Messages widget on the right side so that members of an organization can send out announcements.
-![Organization Details](../images/SP02/1.png)
-As you can see, Rhonda is a member of App Team Carolina and wants to send out a message/announcement.
-
-Once an announcement is made, other members of the organization will be able to see it in the organization details as well!
-![Announcement](../images/SP02/2.png)
-
-### Student Application<a name='Apply'></a>
-
-As mentioned, our 'Apply' button in the last sprint was just a front-end mockup with no functionality. Well now, as a student you are able to apply to an organization straight from the CSXL website!
-
-![Apply](../images/SP02/3.png)
-Here you can see, as Sally Student, the 'Apply' button is visible for organizations that you are not apart of and are open to application. Once clicked, you will be redirected to the new application form page.
-
-![ApplyForm](../images/SP02/4.png)
-![ApplyForm2](../images/SP02/5.png)
-Here as you can see, we have setup an application form for students to fill out short questions. All that's left for the student to do is answer the questions an press 'Submit Application'!
-
-### Admin Application Review<a name='Apply Review'></a>
-
-As an admin of an organization, we have added the functionality in order to review, deny, and accept applications.
-
-As an admin(Rhonda Root), you can navigate to the organizations page. In the top right, select the gear widget to redirect you to Organization Administration
-![Admin](../images/SP02/6.png)
-
-In Organization Administration, it will list all of the organizations you are an admin of. Select 'Applications' in the desired organization tab.
-![Admin2](../images/SP02/7.png)
-
-Here in the Admin Application page, you can review student applications. On the right side under actions, there are 3 widgets for an application: details, approve, and deny.
-![Admin3](../images/SP02/8.png)
-
-Here in the details, you are able to review all of the answered questions and information regarding the student appying.
-![Admin3](../images/SP02/9.png)
-After reviewing an application, the admin can deny or approve the request.
-
-### New Member!<a name='New Member'></a>
-
-After an admin reviews an application and decides to accept a student, the changes will automatically be made on the Admin Application Review page and change that students status to approved.
-![Member](../images/SP02/10.png)
-
-Finally, as a new member of an organization (Sally Student), you can go back to the organization details page and be able to see your name under the members list, as well as your academic term, every member in the organization, view organization messages, and post organization messages!
-![Member2](../images/SP02/11.png)
-
 ## Descriptions/Sample Data<a name='Descriptions/Sample Data'></a>
 
 There are two new models that was added, OrganizationApplication and OrganizationMessages. We also added an ApplicationStatus Model for enums.
@@ -110,3 +63,50 @@ To comprehensively get started, follow this path.
 
 -Backend: Look at the Organization_application and Organization API functions, as these are the closest to the frontend functions.
 Organization_Application, Organization_messages, and Organizaiton Entities would be next, as well as these models and services. For the frontend, look at the model files, such as Organization-Application model and Organization-Message model
+
+## Demo Walk-through<a name='Demo'></a>
+
+### Organization Members Listed & Messages<a name='Org Members and Messages'></a>
+
+Once you are at the CSXL website and in the Organizations tab using the side menu, you can select any organization to collect their details. The changes that we made now allows a member of that organization to view all members of that organization in a list, including their name and academic term. We have also added an Organization Messages widget on the right side so that members of an organization can send out announcements.
+![Organization Details](../images/SP02/1.png)
+As you can see, Rhonda is a member of App Team Carolina and wants to send out a message/announcement.
+
+Once an announcement is made, other members of the organization will be able to see it in the organization details as well!
+![Announcement](../images/SP02/2.png)
+
+### Student Application<a name='Apply'></a>
+
+As mentioned, our 'Apply' button in the last sprint was just a front-end mockup with no functionality. Well now, as a student you are able to apply to an organization straight from the CSXL website!
+
+![Apply](../images/SP02/3.png)
+Here you can see, as Sally Student, the 'Apply' button is visible for organizations that you are not apart of and are open to application. Once clicked, you will be redirected to the new application form page.
+
+![ApplyForm](../images/SP02/4.png)
+![ApplyForm2](../images/SP02/5.png)
+Here as you can see, we have setup an application form for students to fill out short questions. All that's left for the student to do is answer the questions an press 'Submit Application'!
+
+### Admin Application Review<a name='Apply Review'></a>
+
+As an admin of an organization, we have added the functionality in order to review, deny, and accept applications.
+
+As an admin(Rhonda Root), you can navigate to the organizations page. In the top right, select the gear widget to redirect you to Organization Administration
+![Admin](../images/SP02/6.png)
+
+In Organization Administration, it will list all of the organizations you are an admin of. Select 'Applications' in the desired organization tab.
+![Admin2](../images/SP02/7.png)
+
+Here in the Admin Application page, you can review student applications. On the right side under actions, there are 3 widgets for an application: details, approve, and deny.
+![Admin3](../images/SP02/8.png)
+
+Here in the details, you are able to review all of the answered questions and information regarding the student appying.
+![Admin3](../images/SP02/9.png)
+After reviewing an application, the admin can deny or approve the request.
+
+### New Member!<a name='New Member'></a>
+
+After an admin reviews an application and decides to accept a student, the changes will automatically be made on the Admin Application Review page and change that students status to approved.
+![Member](../images/SP02/10.png)
+
+Finally, as a new member of an organization (Sally Student), you can go back to the organization details page and be able to see your name under the members list, as well as your academic term, every member in the organization, view organization messages, and post organization messages!
+![Member2](../images/SP02/11.png)

@@ -28,7 +28,7 @@ cads = Organization(
     youtube="https://www.youtube.com/channel/UCO44Yjhjuo5-TLUCAaP0-cQ",
     heel_life="https://heellife.unc.edu/organization/carolinadatascience",
     public=True,
-    needs_application=False,
+    needs_application=True,
     open_status=True,
 )
 

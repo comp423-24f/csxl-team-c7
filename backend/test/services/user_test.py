@@ -298,3 +298,18 @@ def test_get_user_organizations_user_not_found(user_svc_integration: UserService
     """Test that a non-existent user raises a ResourceNotFoundException."""
     with pytest.raises(ResourceNotFoundException):
         user_svc_integration.get_user_organizations(999)
+
+
+def test_get_user_details(user_svc: UserService):
+    """Test get_user_details method"""
+    user_details = user_svc.get_user_details(user.id)
+    assert user_details is not None, "User details should not be None"
+    assert user_details.id == user.id, "User ID should match the requested ID"
+
+
+def test_get_user_details_user_not_found(user_svc: UserService):
+    non_existent_user_id = (
+        9999  # Replace with an ID that does not exist in the test database
+    )
+    with pytest.raises(ResourceNotFoundException):
+        user_svc.get_user_details(non_existent_user_id)
